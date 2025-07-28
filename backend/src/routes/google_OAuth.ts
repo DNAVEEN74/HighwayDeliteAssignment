@@ -3,7 +3,6 @@ import passport from 'passport';
 import jwt from 'jsonwebtoken';
 import { Strategy as GoogleStrategy, Profile } from 'passport-google-oauth20';
 import { User } from "../db";
-import { ResponseStatus } from "../server";
 
 declare global {
   namespace Express {
@@ -14,7 +13,6 @@ declare global {
 }
 
 export interface UserInterface {
-  googleId: string;
   userName: string;
   email?: string;
 }
@@ -31,23 +29,27 @@ passport.use(
     },
     async (req: Request, accessToken: string, refreshToken: string, profile: Profile, done: (error: any, user?: any) => void) => {
       const secretKey = process.env.JWT_SECRET;
-      const existingUser = await User.findOne({googleId: profile.id});
 
-      if(existingUser) {
-        const token = jwt.sign({ user: existingUser }, secretKey as string);
-        req.token = token;
-        return done(null, { user: existingUser})
+      try {
+        const email = profile.emails && profile.emails.length > 0 ? profile.emails[0].value : undefined;
+        const existingUser = await User.findOne({email: email});
+
+        if(existingUser) {
+          const token = jwt.sign({ userId: existingUser._id, userName: existingUser.userName, email: existingUser.email }, secretKey as string);
+          return done(null, { user: existingUser, token });
+        }
+      } catch (err) {
+        return done(err);
       }
 
       const newUser = await User.create({
-        googleId: profile.id,
         userName: profile.displayName,
         email: profile.emails && profile.emails.length > 0 ? profile.emails[0].value : undefined
       })
+      await newUser.save();
 
-      const token = jwt.sign({user: newUser}, secretKey as string);
-      req.token = token;
-      return done(null, {user: newUser})
+      const token = jwt.sign({userId: newUser._id, userName: newUser.userName, emai: newUser.email}, secretKey as string);
+      return done(null, { user: newUser, token });
     }
   )
 );
@@ -58,8 +60,7 @@ router.get('/google', passport.authenticate('google',
 
 router.get('/noteMaster/callback', passport.authenticate('google', { session: false, failureRedirect: '/',}),
   (req: Request, res: Response) => {
-    const user = req.user;
-    const token = req.token;
+    const { token } = req.user as { user: any, token: string };
 
     res.redirect(`http://localhost:5173/dashboard?token=${token}`);
   }
