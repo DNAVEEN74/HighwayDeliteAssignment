@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+dotenv.config();
 import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
 import cors from 'cors';
@@ -13,7 +14,6 @@ export enum ResponseStatus{
   Error = 401
 }
 
-dotenv.config();
 const allowedOrigins: string[] = ['http://localhost:5173'];
 
 const corsOptions = {

@@ -36,7 +36,6 @@ export const User = model<IUserSchema>("User", userSchema);
 
 const notesSchema: Schema = new Schema({
     userId: { type: Schema.ObjectId, ref: User},
-    notesNumber: {type: Number, require: true},
     notes: {type: String, require: true}
 })
 export const Notes = model("Notes", notesSchema);

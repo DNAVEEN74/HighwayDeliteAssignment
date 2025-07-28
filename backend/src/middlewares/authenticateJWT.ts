@@ -7,7 +7,7 @@ export function authenticateJWT (req: Request, res: Response, next: NextFunction
   const token: string = authHeader.split(' ')[1];
 
   if (!token) {
-    res.status(ResponseStatus.Error).json({ message: 'Missing token' });
+    return res.status(ResponseStatus.Error).json({ message: 'Missing token' });
   }
 
   try {
