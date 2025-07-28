@@ -1,0 +1,41 @@
+.dashboardContainer {
+    width: 100vw;
+    display: flex;
+    box-sizing: border-box;
+    padding-left: 100px;
+    padding-right: 100px;
+    flex-direction: column;
+}
+
+.dashboardTitleBar {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgba(206, 206, 206, 0.695);
+}
+
+.myNoteText {
+    font-family: sans-serif;
+    font-size: 35px;
+    font-weight: bolder;
+}
+
+.newNoteButton {
+    font-family: sans-serif;
+    font-size: 20px;
+    width: 150px;
+    height: 40px;
+    background-color: rgb(68, 68, 252);
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.noteContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
