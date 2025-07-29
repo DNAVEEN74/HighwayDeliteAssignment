@@ -1,17 +1,17 @@
 
-# 📝 NoteMaster – HighwayDelite Assignment
+# NoteMaster – HighwayDelite Assignment
 
 NoteMaster is a simple note-taking web app built for HighwayDelite as part of an assignment. It offers both Google OAuth and Email OTP-based authentication. Users can create and delete tasks/notes.
 
 ---
 
-## 🔗 Live Demo
+## Live Demo
 
-[🔗 Vercel deployed link](https://highway-delite-assignment-inky.vercel.app/)
+[Vercel deployed link](https://highway-delite-assignment-inky.vercel.app/)
 
 ---
 
-## 🚀 Features
+##  Features
 
 - ✅ Google OAuth Login/Signup
 - ✅ Email-based OTP Authentication
@@ -23,7 +23,7 @@ NoteMaster is a simple note-taking web app built for HighwayDelite as part of an
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 ### Frontend
 
