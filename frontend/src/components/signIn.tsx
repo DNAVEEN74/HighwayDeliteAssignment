@@ -19,7 +19,7 @@ export function SignIn () {
 
     const inputFields: SignInFields[] = [
         { name: 'email', title: 'Email', placeholder: 'Enter your email address' },
-        { name: 'otp', title: 'otp', placeholder: 'Enter otp' }
+        { name: 'otp', title: 'Otp', placeholder: 'Enter otp' }
     ];
 
     const handleChange = (e: any) => {

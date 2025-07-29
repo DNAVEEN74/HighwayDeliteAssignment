@@ -18,18 +18,19 @@ interface SignUpFields {
 export function SignUp () {
     const [signUpData, setSignUpData] = useRecoilState(signUpAtom);
 
-    const inputFields: SignUpFields[] = [
-        { name: 'userName', title: 'userName', placeholder: 'Your Name' },
-        {name: 'dateOfBirth', title: 'dateOfBirth', placeholder: 'Date of Birth'},
-        { name: 'email', title: 'Email', placeholder: 'Enter your email address' },
-        { name: 'otp', title: 'otp', placeholder: 'Enter otp' }
-    ];
+    const inputFields: (SignUpFields & { type?: string; isDate?: boolean })[] = [
+    { name: 'userName', title: 'Your name', placeholder: 'Your Name' },
+    { name: 'dateOfBirth', title: 'Date of birth', placeholder: 'Select your date of birth', type: 'text', isDate: true },
+    { name: 'email', title: 'Email', placeholder: 'Enter your email address' },
+    { name: 'otp', title: 'Otp', placeholder: 'Enter otp' }
+];
+
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         setSignUpData((prev) => ({
             ...prev,
-            [name]: value
+            [name]: value 
         }));
     };
 
