@@ -1,7 +1,11 @@
 import { ListTodo, CircleUserRound } from 'lucide-react';
 import '../styles/appBar.css'
 
-export function AppBar () {
+interface IAppBarProp {
+    userName: string
+}
+
+export function AppBar ({userName}: IAppBarProp) {
     return (
         <div className="appBarContainer">
             <div className="appBarLeftContainer">
@@ -9,7 +13,7 @@ export function AppBar () {
                 <h4 className='appBarLogo'>NoteMaster</h4>
             </div>
             <div className="appBarRightContainer">
-                <h4 className='appBarUserTitle'>Hello, Naveen</h4>
+                <h4 className='appBarUserTitle'>Hello, {userName}</h4>
                 <CircleUserRound />
             </div>
         </div>

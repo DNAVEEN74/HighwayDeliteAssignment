@@ -42,7 +42,17 @@ app.use('/note', noteRoutes);
 app.use('/otp', otpRoutes);
 
 app.get('/profile', authenticateJWT, (req: Request, res: Response) => {
-  res.json(req.user);
+  const { userId, userName, email } = req.user as {
+    userId: string;
+    userName: string;
+    email: string;
+  };
+
+  res.status(ResponseStatus.Success).json({
+    userId,
+    userName,
+    email
+  });
 });
 
 app.listen(3000, () => {
