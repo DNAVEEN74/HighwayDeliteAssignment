@@ -1,6 +1,5 @@
 import nodemailer from 'nodemailer';
 import { Router, Request, Response, NextFunction } from 'express';
-import bcrypt from 'bcrypt';
 import { ResponseStatus } from '../server';
 import { User, OtpField } from '../db';
 import Jwt  from 'jsonwebtoken';
@@ -30,17 +29,16 @@ router.post('/send', async (req: Request, res: Response, next: NextFunction) => 
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     const expiredAt = Date.now() + 5 * 60 * 1000;
-    
-    const otpUpload = await OtpField.create({ email, otp, expiredAt });
-    await otpUpload.save();
+
+    await OtpField.deleteMany({ email });
+    await OtpField.create({ email, otp, expiredAt });
     await sendOTPEmail(email, otp);
 
     res.status(ResponseStatus.Success).json({ message: 'OTP sent to your email' });
 })
 
 router.post('/verify', async (req: Request, res: Response, next: NextFunction) => {
-    const { firstName, lastName, password, email, otp } = req.body;
-    const userName = firstName +' '+ lastName;
+    const { userName, dateOfBirth, email, otp } = req.body;
     const otpData = await OtpField.findOne({ email });
     const secretKey = process.env.JWT_SECRET;
 
@@ -51,30 +49,24 @@ router.post('/verify', async (req: Request, res: Response, next: NextFunction) =
         return res.status(ResponseStatus.Error).json({ message: 'OTP expired' });
     }
     
-    const existingUser = await User.findOne({userName: userName, email: email});
+    const existingUser = await User.findOne({email: email});
     
     if(existingUser) {
         await OtpField.deleteOne({email: email});
 
-        const isPasswordValid = await bcrypt.compare(password, existingUser.password as string);
-        if(!isPasswordValid) return res.status(ResponseStatus.Error).json({message: 'Invalid Password'})
-
-        const token = Jwt.sign({userId: existingUser._id, userName: userName, email: email}, secretKey as string);
+        const token = Jwt.sign({userId: existingUser._id, userName: existingUser.userName, email: existingUser.email}, secretKey as string);
         return res.status(ResponseStatus.Success).json({
             message: 'OTP verified successfully',
             token: token
         })
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     const newUser = await User.create({
         userName: userName,
-        email: email,
-        password: hashedPassword
+        dateOfBirth: dateOfBirth,
+        email: email
     })
 
-    await newUser.save();
     await OtpField.deleteOne({email: email});
 
     const token = Jwt.sign({userId: newUser._id, userName: newUser.userName, email: newUser.email}, secretKey as string);
@@ -84,4 +76,4 @@ router.post('/verify', async (req: Request, res: Response, next: NextFunction) =
     });
 })
 
-module.exports = router;
+export default router;

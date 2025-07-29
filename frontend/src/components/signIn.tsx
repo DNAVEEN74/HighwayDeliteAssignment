@@ -45,7 +45,7 @@ export function SignIn () {
                     value={signInData[field.name]}
                     onChange={handleChange}
                     />))}
-                    <SubmitButton type={'SignUp'} />
+                    <SubmitButton from={'SignIn'} />
                     <BottomWarning text={"Need an account?"} hyperText={'SignUp'} />
                     <p style={{
                         fontFamily:'sans-serif',
@@ -53,7 +53,7 @@ export function SignIn () {
                         marginBottom:'1px',
                         alignSelf:'center'
                     }} >or</p>
-                    <GoogleAuthButton type={'Login with google'} />
+                    <GoogleAuthButton type={'Login'} />
             </div>
         </div>
     )

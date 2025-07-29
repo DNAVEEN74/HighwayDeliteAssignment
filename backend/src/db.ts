@@ -10,8 +10,8 @@ interface IOtp extends Document {
 
 interface IUserSchema extends Document {
     userName: string,
-    email: string,
-    password: string
+    dateOfBirth: string,
+    email: string
 }
 
 export async function connectDb() {
@@ -29,8 +29,8 @@ export async function connectDb() {
 
 const userSchema: Schema = new Schema<IUserSchema>({
     userName: { type: String, require: true },
-    email: { type: String, require: true },
-    password: { type: String}
+    dateOfBirth: { type: String },
+    email: { type: String, require: true }
 })
 export const User = model<IUserSchema>("User", userSchema);
 

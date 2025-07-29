@@ -24,7 +24,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID || '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-      callbackURL: 'http://localhost:3000/auth/noteMaster/callback',
+      callbackURL:`http://localhost:3000/auth/noteMaster/callback`,
       passReqToCallback: true,
     },
     async (req: Request, accessToken: string, refreshToken: string, profile: Profile, done: (error: any, user?: any) => void) => {
@@ -46,9 +46,8 @@ passport.use(
         userName: profile.displayName,
         email: profile.emails && profile.emails.length > 0 ? profile.emails[0].value : undefined
       })
-      await newUser.save();
 
-      const token = jwt.sign({userId: newUser._id, userName: newUser.userName, emai: newUser.email}, secretKey as string);
+      const token = jwt.sign({userId: newUser._id, userName: newUser.userName, email: newUser.email}, secretKey as string);
       return done(null, { user: newUser, token });
     }
   )
@@ -62,8 +61,8 @@ router.get('/noteMaster/callback', passport.authenticate('google', { session: fa
   (req: Request, res: Response) => {
     const { token } = req.user as { user: any, token: string };
 
-    res.redirect(`http://localhost:5173/dashboard?token=${token}`);
+    res.redirect(`http://localhost:5173/Dashboard?token=${token}`);
   }
 );
 
-module.exports = router;
+export default router;

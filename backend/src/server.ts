@@ -5,9 +5,9 @@ import passport from 'passport';
 import cors from 'cors';
 import {connectDb} from './db';
 import {authenticateJWT} from './middlewares/authenticateJWT';
-const googleAuth = require("./routes/google_OAuth");
-const noteRoutes = require('./routes/noteRoutes')
-const otpRoutes = require('./routes/nodeMail');
+import googleAuth from './routes/google_OAuth';
+import noteRoutes from './routes/noteRoutes';
+import otpRoutes from './routes/nodeMail';
 
 export enum ResponseStatus{
   Success = 200,
