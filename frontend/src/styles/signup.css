@@ -1,0 +1,20 @@
+.SignUpOuterContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signUpContainer {
+    width: 380px;
+    height: 600px;
+    box-sizing: border-box;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    justify-content: space-around;
+}

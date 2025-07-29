@@ -1,3 +1,5 @@
+import '../styles/inputBox.css';
+
 interface InputCompPars {
     title: string,
     placeholder: string,

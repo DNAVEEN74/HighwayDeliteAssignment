@@ -3,6 +3,12 @@ import { signUpAtom } from "../atoms/registerAtom";
 import type { SignUp } from '../atoms/registerAtom'
 import InputBox from "./inputBox";
 import { SubmitButton } from "./submitButton";
+import React from "react";
+import Header from "./header";
+import SubHeading from "./subHeading";
+import BottomWarning from "./bottomWarning";
+import '../styles/signup.css'
+import { GoogleAuthButton } from "./googleAuthButton";
 
 interface SignUpFields {
   name: keyof SignUp;
@@ -29,18 +35,30 @@ export function SignUp () {
     };
 
     return (
-        <div className="signUpContainer">
-            <h2 className="signUpHeader">Sign up</h2>
-            <p className="signUpSubHeader">Sign up to enjoy the features of NoteMaster</p>
-            { inputFields.map((field, index) => ( 
-                <InputBox 
-                key={index} 
-                title={field.title} 
-                placeholder={field.placeholder} 
-                name={field.name} 
-                value={signUpData[field.name]} 
-                onChange={handleChange} />))}
-            <SubmitButton />
+        <div className="SignUpOuterContainer">
+            <div className="signUpContainer">
+                <Header title={'SignUp'} />
+                <SubHeading subHeading={"Sign up to enjoy the features of NoteMaster"} />
+                {inputFields.map((field, index) => (
+                    <InputBox
+                        key={index}
+                        title={field.title}
+                        placeholder={field.placeholder}
+                        name={field.name}
+                        value={signUpData[field.name]}
+                        onChange={handleChange}
+                    />
+                ))}
+                <SubmitButton type={'SignUp'} />
+                <BottomWarning text={"Already have an account?"} hyperText={'SignIn'} />
+                <p style={{
+                    fontFamily:'sans-serif',
+                    marginTop:'1px',
+                    marginBottom:'1px',
+                    alignSelf:'center'
+                }} >or</p>
+                <GoogleAuthButton type={'Continue with google'} />
+            </div>
         </div>
     )
 }

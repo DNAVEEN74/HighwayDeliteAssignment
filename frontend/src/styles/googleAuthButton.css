@@ -1,0 +1,32 @@
+.googleAuthButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 350px;
+
+  background-color: white;
+  color: #3c4043;
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.googleAuthButton:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f7f8f9;
+}
+
+
+.googleAuthText {
+  flex: 1;
+  text-align: center;
+}

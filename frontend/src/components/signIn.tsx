@@ -1,6 +1,13 @@
 import { useRecoilState } from "recoil";
 import { signInAtom, type SignIn } from "../atoms/registerAtom";
 import InputBox from "./inputBox";
+import { SubmitButton } from "./submitButton";
+import React from "react";
+import BottomWarning from "./bottomWarning";
+import SubHeading from "./subHeading";
+import Header from "./header";
+import '../styles/signin.css'
+import { GoogleAuthButton } from "./googleAuthButton";
 
 interface SignInFields {
   name: keyof SignIn;
@@ -25,17 +32,29 @@ export function SignIn () {
     };
 
     return (
-        <div className="signInContainer">
-            <h2 className="signInHeader">Sign in</h2>
-            <p className="signInsubHeader"></p>
-            { inputFields.map((field, index) => ( 
-                            <InputBox 
-                            key={index} 
-                            title={field.title} 
-                            placeholder={field.placeholder} 
-                            name={field.name} 
-                            value={signInData[field.name]} 
-                            onChange={handleChange} />))}
+        <div className="SignInOuterContainer">
+            <div className="signInContainer">
+                <Header title={'SignIn'} />
+                <SubHeading subHeading={"Please login to continue to your account"} />
+                {inputFields.map((field, index) => (
+                <InputBox
+                    key={index}
+                    title={field.title}
+                    placeholder={field.placeholder}
+                    name={field.name}
+                    value={signInData[field.name]}
+                    onChange={handleChange}
+                    />))}
+                    <SubmitButton type={'SignUp'} />
+                    <BottomWarning text={"Need an account?"} hyperText={'SignUp'} />
+                    <p style={{
+                        fontFamily:'sans-serif',
+                        marginTop:'1px',
+                        marginBottom:'1px',
+                        alignSelf:'center'
+                    }} >or</p>
+                    <GoogleAuthButton type={'Login with google'} />
+            </div>
         </div>
     )
 }
