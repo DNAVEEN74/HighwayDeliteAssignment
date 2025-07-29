@@ -14,7 +14,7 @@ export enum ResponseStatus{
   Error = 401
 }
 
-const allowedOrigins: string[] = ['https://highway-delite-ass-git-e75107-naveendurgam74-gmailcoms-projects.vercel.app','http://localhost:5173'];
+const allowedOrigins: string[] = ['https://highway-delite-assignment-inky.vercel.app','http://localhost:5173'];
 
 const corsOptions = {
   origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void ) => {
