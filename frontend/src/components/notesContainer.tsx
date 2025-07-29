@@ -40,7 +40,7 @@ export function NotesContainer({noteId, information }: NotesContainerProps) {
             <div className="noteInfo">
                 {information}
             </div>
-            <Trash2 onClick={() => handleDeleteNote(noteId)} />
+            <Trash2 style={{cursor:'pointer'}} onClick={() => handleDeleteNote(noteId)} />
         </div>
     )
 }
