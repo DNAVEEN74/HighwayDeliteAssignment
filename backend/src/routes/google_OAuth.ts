@@ -24,7 +24,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID || '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-      callbackURL:`http://localhost:3000/auth/noteMaster/callback`,
+      callbackURL:`https://highwaydeliteassignment.onrender.com/auth/noteMaster/callback`,
       passReqToCallback: true,
     },
     async (req: Request, accessToken: string, refreshToken: string, profile: Profile, done: (error: any, user?: any) => void) => {
@@ -61,7 +61,7 @@ router.get('/noteMaster/callback', passport.authenticate('google', { session: fa
   (req: Request, res: Response) => {
     const { token } = req.user as { user: any, token: string };
 
-    res.redirect(`http://localhost:5173/Dashboard?token=${token}`);
+    res.redirect(`https://highway-delite-assignment-161k.vercel.app/Dashboard?token=${token}`);
   }
 );
 

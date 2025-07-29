@@ -28,7 +28,7 @@ export function Dashboard () {
     useEffect(() => {
         const fetchUserProfile = async () => {
             const token = localStorage.getItem('authToken')
-            const response = await axios.get('http://localhost:3000/profile', {
+            const response = await axios.get('https://highwaydeliteassignment.onrender.com/profile', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

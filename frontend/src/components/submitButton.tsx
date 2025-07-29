@@ -40,7 +40,7 @@ export function SubmitButton ({from}: ISubmitButton) {
         if(buttonType === 'Get OTP') {
 
             try {
-                const response = await axios.post(`http://localhost:3000/otp/send`, { email: email});
+                const response = await axios.post(`https://highwaydeliteassignment.onrender.com/otp/send`, { email: email});
                 if(response.status === 401) {
                 return toast.success(response.data.message);
                 } else if (response.status === 200) {
@@ -54,7 +54,7 @@ export function SubmitButton ({from}: ISubmitButton) {
         } else if ( buttonType === 'SignUp') {
             
             try {
-                const response = await axios.post(`http://localhost:3000/otp/verify`, {
+                const response = await axios.post(`https://highwaydeliteassignment.onrender.com/otp/verify`, {
                     userName: signUpData.userName,
                     dateOfBirth: signUpData.dateOfBirth,
                     email: signUpData.email,
@@ -75,7 +75,7 @@ export function SubmitButton ({from}: ISubmitButton) {
         } else if ( buttonType === 'SignIn') {
             
             try {
-                const response = await axios.post(`http://localhost:3000/otp/verify`,{
+                const response = await axios.post(`https://highwaydeliteassignment.onrender.com/otp/verify`,{
                     email: signInData.email,
                     otp: signInData.otp
                 })

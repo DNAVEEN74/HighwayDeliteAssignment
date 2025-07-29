@@ -8,7 +8,7 @@ interface IPars {
 export function GoogleAuthButton({ type }: IPars) {
 
   const handleSubmit = () => {
-    window.location.href = `http://localhost:3000/auth/google`;
+    window.location.href = `https://highwaydeliteassignment.onrender.com/auth/google`;
   };
 
   return (

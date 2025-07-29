@@ -14,7 +14,7 @@ export enum ResponseStatus{
   Error = 401
 }
 
-const allowedOrigins: string[] = ['http://localhost:5173'];
+const allowedOrigins: string[] = ['https://highway-delite-assignment-161k.vercel.app','http://localhost:5173'];
 
 const corsOptions = {
   origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void ) => {
@@ -56,5 +56,5 @@ app.get('/profile', authenticateJWT, (req: Request, res: Response) => {
 });
 
 app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+  console.log('Server running');
 });
