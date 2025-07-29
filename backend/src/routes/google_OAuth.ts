@@ -61,7 +61,7 @@ router.get('/noteMaster/callback', passport.authenticate('google', { session: fa
   (req: Request, res: Response) => {
     const { token } = req.user as { user: any, token: string };
 
-    res.redirect(`https://highway-delite-assignment-161k.vercel.app/Dashboard?token=${token}`);
+    res.redirect(`https://highway-delite-ass-git-e75107-naveendurgam74-gmailcoms-projects.vercel.app//Dashboard?token=${token}`);
   }
 );
 
