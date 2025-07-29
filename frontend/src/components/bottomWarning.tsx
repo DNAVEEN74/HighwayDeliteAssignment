@@ -14,7 +14,7 @@ export default function BottomWarning ({text, hyperText}: IBottomWarningPars) {
         }}  >
             {text}
             <a href={`/${hyperText}`} style={{
-                color:'black'
+                color:'blue'
             }}>
                 {hyperText}
             </a>

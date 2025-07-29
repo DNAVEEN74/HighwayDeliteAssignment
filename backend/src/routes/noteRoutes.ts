@@ -38,27 +38,6 @@ router.get('/getnote', authenticateJWT, async (req: Request, res: Response) => {
   }
 });
 
-router.put('/updatenote', authenticateJWT, async (req: Request, res: Response) => {
-  try {
-    const { noteId, notes } = req.body;
-    const user = req.user as { userId: string };
-
-    if (!noteId || !notes) {
-      return res.status(ResponseStatus.Error).json({ message: "noteId and notes are required" });
-    }
-
-    const updatedNote = await Notes.findOneAndUpdate(
-      { _id: noteId, userId: user.userId },
-      { notes },
-      { new: true }
-    );
-
-    res.status(ResponseStatus.Success).json({ message: "Note updated successfully" });
-  } catch (err) {
-    res.status(ResponseStatus.Error).json({ message: `Failed to update note: ${err}` });
-  }
-});
-
 router.delete('/deletenote', authenticateJWT, async (req: Request, res: Response) => {
   try {
     const { noteId } = req.body;

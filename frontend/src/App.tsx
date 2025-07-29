@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Navigate to='/SignUp' replace />} />
+        <Route path='/' element={<Navigate to='/Dashboard' replace />} />
         <Route path='/Dashboard' element={<Dashboard />} />
         <Route path='/SignUp' element={<RegisterPage comp='SignUp' />} />
         <Route path='/SignIn' element={<RegisterPage comp='SignIn' />} />

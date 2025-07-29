@@ -22,7 +22,7 @@
     font-weight: bolder;
 }
 
-.newNoteButton {
+.noteButton {
     font-family: sans-serif;
     font-size: 20px;
     width: 150px;
@@ -31,6 +31,7 @@
     color: white;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .noteContainer {
@@ -38,4 +39,39 @@
     flex-direction: column;
     gap: 10px;
     width: 100%;
+}
+
+.newNoteInputField {
+    width: 90%;
+    min-width: 350px;
+    height: 60px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0px 0px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border: 0.5px solid rgb(138, 138, 138);
+}
+
+.newNoteAddButton {
+    width: 80px;
+    height: 62px;
+    border: none;
+    box-sizing: border-box;
+    background-color: rgb(53, 53, 255);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.newNoteAddButton:hover {
+    background-color: rgb(100, 100, 255);
 }
