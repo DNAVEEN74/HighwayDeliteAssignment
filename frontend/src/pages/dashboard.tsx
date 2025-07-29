@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { AppBar } from "../components/appBar";
-import { NotesContainer } from "../components/notesContainer";
 import '../styles/dashboard.css'
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";

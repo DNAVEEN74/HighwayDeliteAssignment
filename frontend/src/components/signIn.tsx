@@ -2,7 +2,6 @@ import { useRecoilState } from "recoil";
 import { signInAtom, type SignIn } from "../atoms/registerAtom";
 import InputBox from "./inputBox";
 import { SubmitButton } from "./submitButton";
-import React from "react";
 import BottomWarning from "./bottomWarning";
 import SubHeading from "./subHeading";
 import Header from "./header";

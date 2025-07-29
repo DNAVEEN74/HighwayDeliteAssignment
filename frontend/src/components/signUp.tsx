@@ -3,7 +3,6 @@ import { signUpAtom } from "../atoms/registerAtom";
 import type { SignUp } from '../atoms/registerAtom'
 import InputBox from "./inputBox";
 import { SubmitButton } from "./submitButton";
-import React from "react";
 import Header from "./header";
 import SubHeading from "./subHeading";
 import BottomWarning from "./bottomWarning";
